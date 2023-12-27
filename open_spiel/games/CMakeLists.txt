@@ -183,6 +183,8 @@ set(GAME_SOURCES
   ultimate_tic_tac_toe/ultimate_tic_tac_toe.cc
   y/y.cc
   y/y.h
+  cathedral/cathedral.h
+  cathedral/cathedral.cc
 )
 
 if (${OPEN_SPIEL_BUILD_WITH_HANABI})
@@ -624,3 +626,7 @@ endif()
 add_executable(y_test y/y_test.cc ${OPEN_SPIEL_OBJECTS}
                $<TARGET_OBJECTS:tests>)
 add_test(y_test y_test)
+
+add_executable(cathedral_test cathedral/cathedral_test.cc ${OPEN_SPIEL_OBJECTS}
+               $<TARGET_OBJECTS:tests>)
+add_test(cathedral_test cathedral_test)
