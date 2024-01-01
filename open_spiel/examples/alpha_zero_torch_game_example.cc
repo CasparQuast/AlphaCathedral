@@ -142,6 +142,7 @@ PlayGame(const open_spiel::Game &game,
     } else {
       // The state must be a decision node, ask the right bot to make its
       // action.
+      std::cerr << "Player " << player << " is thinking..." << std::endl;
       action = bots[player]->Step(*state);
     }
     if (!quiet)
