@@ -40,7 +40,7 @@ namespace open_spiel
         inline constexpr int range_of_nn_distribution = 5600; // highest possible encoded move
         inline constexpr int max_game_length = 40; // 30 pieces in total + 10 for possible replaced pieces
         inline constexpr int max_rotations = 4;
-        inline constexpr int total_planes = 14 /*pieces*/ + 1 /*empty*/+ 1 /*game_phase represented by normalized move count*/;
+        inline constexpr int total_planes = 14 /*pieces*/ + 1 /*game_phase represented by normalized move count*/ + 1 /*free square*/ + 1 /*current player*/;
 
         enum class BuildingType
         {
@@ -292,7 +292,8 @@ namespace open_spiel
             void PopulatePiecePlanes(TensorView<3>& view, Player player) const;
             void PopulateGameProgressPlane(TensorView<3>& view) const;
             void PopulateFreeSquaresPlane(TensorView<3>& view, Player player) const;
-
+            void PopulateCurrentPlayerPlane(TensorView<3>& view, Player player) const;
+            
             std::vector<PlayerMove> removed_moves;
 
             Board board;

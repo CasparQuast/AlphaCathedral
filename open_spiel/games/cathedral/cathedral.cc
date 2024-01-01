@@ -126,6 +126,7 @@ void CathedralState::ObservationTensor(Player player, absl::Span<float> values) 
     PopulateFreeSquaresPlane(view, player);
 
     // Current player
+    PopulateCurrentPlayerPlane(view, player);
 }
 
 void CathedralState::PopulatePiecePlanes(TensorView<3>& view, Player player) const {
@@ -879,6 +880,16 @@ void CathedralState::PopulateFreeSquaresPlane(TensorView<3>& view, Player player
     }
 }
 
+void CathedralState::PopulateCurrentPlayerPlane(TensorView<3> &view, Player player) const
+{
+    float value = (player == 1) ? 1.0f : 0.0f;
+
+    for (int y = 0; y < board_width; ++y) {
+        for (int x = 0; x < board_width; ++x) {
+            view[{15, y, x}] = value;
+        }
+    }
+}
 
 }  // namespace cathedral
 }  // namespace open_spiel
